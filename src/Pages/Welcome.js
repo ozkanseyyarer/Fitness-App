@@ -2,11 +2,15 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Button from '../components/Button/Button';
 
-export default function Welcome() {
+export default function Welcome({navigation}) {
+function goToMemberSign(){
+navigation.navigate('MemberSignScreen')
+}
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Welcome</Text>
-      <Button text="Üye Kaydı Oluştur" onPress={null} />
+      <Text style={styles.header}>İstanbul Fitness Salonu</Text>
+      <Button text="Üye Kaydı Oluştur" onPress={goToMemberSign} />
     </View>
   );
 }
