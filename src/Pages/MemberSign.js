@@ -1,18 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
 import Input from '../components/Input/Input'
 import Button from '../components/Button/Button'
 
-export default function MemberSign() {
+export default function MemberSign({navigation}) {
 
 
-  const [userName, setUserName] =useState('');
-  const [userSurname, setUserSurname] =useState('');
-  const [userAge, setUserAge] =useState('');
-  const [userMail, setUserMail] =useState('');
-  const [userHometown, setUserHometown] =useState('');
+  const [userName, setUserName] =useState(null);
+  const [userSurname, setUserSurname] =useState(null);
+  const [userAge, setUserAge] =useState(null);
+  const [userMail, setUserMail] =useState(null);
+  const [userHometown, setUserHometown] =useState(null);
 
-  function handleSubmit(){
+  function handleSubmit(){ 
+
+     if(!userName || !userMail || !userSurname || !userAge || !userHometown){
+      Alert.alert("İstanbul Fitness","Lütfen Tüm Alanları Doldurunuz")
+      return;
+    }
     const user ={
       userName,
       userSurname,
@@ -20,7 +25,8 @@ export default function MemberSign() {
       userMail,
       userHometown
     }
-    console.log(user)
+
+    navigation.navigate('memberresult',{user});
   }
 
   return (
